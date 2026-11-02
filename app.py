@@ -6,25 +6,26 @@ st.set_page_config(
     layout="wide"
 )
 
+# Custom CSS
 st.markdown("""
 <style>
     .main-header {
         font-size: 3rem;
         font-weight: bold;
-        color: #1F3864;
+        color: #4F7BD0;
         text-align: center;
     }
     .sub-header {
         font-size: 1.2rem;
-        color: #1a1a1a;
+        color: inherit;
         text-align: center;
         margin-bottom: 2rem;
     }
     .section-header {
         font-size: 1.8rem;
         font-weight: bold;
-        color: #1F3864;
-        border-bottom: 3px solid #2F5496;
+        color: #4F7BD0;
+        border-bottom: 3px solid #4F7BD0;
         padding-bottom: 0.5rem;
         margin-top: 2rem;
     }
@@ -36,8 +37,12 @@ st.markdown("""
         margin-bottom: 1rem;
         color: #1a1a1a;
     }
-    .project-card h3 { color: #1F3864; }
-    .project-card p { color: #1a1a1a; }
+    .project-card h3 {
+        color: #1F3864;
+    }
+    .project-card p {
+        color: #1a1a1a;
+    }
     .skill-badge {
         background-color: #1F3864;
         color: white;
@@ -47,12 +52,21 @@ st.markdown("""
         display: inline-block;
         font-size: 0.9rem;
     }
+    .contact-bar {
+        background-color: #e8f0fe;
+        padding: 1rem;
+        border-radius: 10px;
+        text-align: center;
+        color: #1a1a1a;
+    }
 </style>
 """, unsafe_allow_html=True)
 
+# Header
 st.markdown('<p class="main-header">Sanika Prasad Naik</p>', unsafe_allow_html=True)
 st.markdown('<p class="sub-header">MSc Data Science | Machine Learning | Generative AI | RAG | Agentic AI | Python</p>', unsafe_allow_html=True)
 
+# Contact links
 col1, col2, col3, col4 = st.columns(4)
 with col1:
     st.markdown("📧 naiksanika70@gmail.com")
@@ -65,12 +79,27 @@ with col4:
 
 st.divider()
 
+# CV download
+try:
+    with open("Sanika_CV.pdf", "rb") as cv_file:
+        st.download_button(
+            label="📄 Download my CV (PDF)",
+            data=cv_file,
+            file_name="Sanika_Naik_CV.pdf",
+            mime="application/pdf",
+        )
+except FileNotFoundError:
+    st.caption("CV download coming soon.")
+
+st.divider()
+
+# About Me
 st.markdown('<p class="section-header">👤 About Me</p>', unsafe_allow_html=True)
 st.write("""
-I am a recent MSc Data Science graduate from the University of Birmingham with hands-on 
-experience building machine learning models, generative AI applications, and RAG pipelines. 
-My dissertation focused on Explainable Deep Learning for Credit Risk Prediction, achieving 
-AUC 0.850 across 150,000 financial records while detecting and mitigating demographic bias.
+I am a recent MSc Data Science graduate from the University of Birmingham with hands-on experience 
+building machine learning models, generative AI applications, and RAG pipelines. My dissertation 
+focused on Explainable Deep Learning for Credit Risk Prediction, achieving AUC 0.850 across 
+150,000 financial records while detecting and mitigating demographic bias.
 
 I am passionate about applying AI and data science to solve real-world problems responsibly, 
 with a particular interest in explainable AI, agentic systems, and making data accessible to everyone.
@@ -80,81 +109,125 @@ with a particular interest in explainable AI, agentic systems, and making data a
 
 st.divider()
 
+# Projects
 st.markdown('<p class="section-header">🛠️ Projects</p>', unsafe_allow_html=True)
 
+# Project 1 - DocuChat
 st.markdown("""
 <div class="project-card">
 <h3>🤖 DocuChat — RAG-Powered PDF Question Answering</h3>
-<p>Upload any PDF and ask questions in natural language. Answers grounded in real document content — no hallucination!</p>
+<p>Upload any PDF and ask questions in natural language. Answers are grounded in real document 
+content using a RAG pipeline, which reduces unsupported answers.</p>
 <p><b>Tech:</b> Python, Streamlit, Google Gemini API, FAISS, PyPDF2</p>
-<p><b>Key feature:</b> Grounding LLM outputs in retrieved context prevents hallucination</p>
+<p><b>Key feature:</b> Grounding LLM outputs in retrieved context reduces unsupported answers</p>
 </div>
 """, unsafe_allow_html=True)
 st.markdown("🔗 [View on GitHub](https://github.com/sanikanaik456/docuchat)")
+
 st.markdown("---")
 
+# Project 2 - Dissertation
 st.markdown("""
 <div class="project-card">
 <h3>💳 Explainable Deep Learning for Credit Risk Prediction</h3>
-<p>MSc Dissertation — PyTorch neural networks on 150,000 credit records (AUC 0.850), SHAP and Integrated Gradients explainability, age bias detected and mitigated (36% to 15%), six-tab Streamlit Decision Support System.</p>
+<p>MSc Dissertation — Built PyTorch neural networks on 150,000 credit records (AUC 0.850), 
+applied SHAP and Integrated Gradients for explainability, detected and mitigated age bias 
+(36% to 15% false-positive rate), and built a six-tab Streamlit Decision Support System.</p>
 <p><b>Tech:</b> Python, PyTorch, SHAP, Captum, Streamlit, Power BI</p>
-<p><b>Key finding:</b> SHAP and Integrated Gradients disagree on feature importance for the same model!</p>
+<p><b>Key finding:</b> SHAP and Integrated Gradients disagree on feature importance for the same model.</p>
 </div>
 """, unsafe_allow_html=True)
 st.markdown("🔗 University of Birmingham GitLab (available on request)")
+
 st.markdown("---")
 
+# Project 3 - AI Agent
 st.markdown("""
 <div class="project-card">
 <h3>🤖 AI Data Analysis Agent</h3>
-<p>Agentic application profiling datasets (150,000+ rows), running automated EDA, producing visualisations, and answering natural-language business questions grounded in real computed results.</p>
+<p>An agentic application that profiles datasets (150,000+ rows), runs automated EDA, 
+produces visualisations, and answers natural-language business questions grounded in 
+real computed results.</p>
 <p><b>Tech:</b> Python, Streamlit, Google Gemini API</p>
 <p><b>Key feature:</b> LLM outputs grounded in real computed context — not raw data</p>
 </div>
 """, unsafe_allow_html=True)
 st.markdown("🔗 [View on GitHub](https://github.com/sanikanaik456)")
+
 st.markdown("---")
 
+# Project - CV Analyzer
+st.markdown("""
+<div class="project-card">
+<h3>📄 CV Analyzer</h3>
+<p>Upload a CV (PDF) and paste a job description. The app asks Google Gemini to compare them and 
+returns a match score, matching and missing skills, strengths and suggestions. It retries 
+automatically when the model is busy.</p>
+<p><b>Tech:</b> Python, Streamlit, PyPDF2, Google Gemini API</p>
+<p><b>Note:</b> The score is an AI estimate, not an objective measure</p>
+</div>
+""", unsafe_allow_html=True)
+st.markdown("🔗 [View on GitHub](https://github.com/sanikanaik456/cv-analyzer)")
+
+st.markdown("---")
+
+# Project 4 - Churn
 st.markdown("""
 <div class="project-card">
 <h3>📊 Customer Churn Prediction</h3>
-<p>End-to-end classification pipeline predicting customer churn on 7,043 telecom records (ROC-AUC 0.842), outperforming random forest baseline with feature importance analysis.</p>
+<p>End-to-end classification pipeline to predict customer churn on 7,043 telecom records. 
+Feature engineering, model selection and evaluation achieving ROC-AUC of 0.842, 
+outperforming random forest baseline.</p>
 <p><b>Tech:</b> Python, scikit-learn, Pandas, Matplotlib</p>
 <p><b>Key insight:</b> Identified top churn drivers through feature importance analysis</p>
 </div>
 """, unsafe_allow_html=True)
 st.markdown("🔗 [View on GitHub](https://github.com/sanikanaik456)")
+
 st.markdown("---")
 
+# Project 5 - Survey Paper
 st.markdown("""
 <div class="project-card">
 <h3>📝 Agentic AI Systems — Survey Paper</h3>
-<p>Comprehensive 28-page survey paper covering multi-agent architectures, LangChain and LangGraph orchestration frameworks, LLM evaluation methodologies, and responsible AI deployment. 84 references.</p>
+<p>Comprehensive 28-page survey paper covering multi-agent architectures, LangChain and 
+LangGraph orchestration frameworks, LLM evaluation methodologies, and responsible AI deployment.</p>
 <p><b>Topics:</b> Multi-agent systems, Tool use, RAG, LLM evaluation, Responsible AI</p>
+<p><b>Coverage:</b> 84 references spanning latest research in agentic AI</p>
 </div>
 """, unsafe_allow_html=True)
 st.markdown("📄 Available on request")
 
 st.divider()
 
+# Skills
 st.markdown('<p class="section-header">🔧 Skills</p>', unsafe_allow_html=True)
+
 col1, col2, col3 = st.columns(3)
+
 with col1:
     st.markdown("**Languages and Databases**")
-    for s in ["Python", "SQL", "MySQL", "PostgreSQL"]:
+    skills1 = ["Python", "SQL", "MySQL", "PostgreSQL"]
+    for s in skills1:
         st.markdown(f'<span class="skill-badge">{s}</span>', unsafe_allow_html=True)
+
 with col2:
     st.markdown("**ML and AI**")
-    for s in ["Machine Learning", "Deep Learning", "GenAI", "RAG", "Agentic AI", "LLMs", "PyTorch", "scikit-learn", "SHAP", "NLP", "Prompt Engineering"]:
+    skills2 = ["Machine Learning", "Deep Learning", "GenAI", "RAG", "Agentic AI", "LLMs", "PyTorch", "scikit-learn", "SHAP", "NLP", "Prompt Engineering"]
+    for s in skills2:
         st.markdown(f'<span class="skill-badge">{s}</span>', unsafe_allow_html=True)
+
 with col3:
     st.markdown("**Tools**")
-    for s in ["Streamlit", "Docker", "Git", "Power BI", "Tableau", "Jupyter", "Matplotlib", "Seaborn"]:
+    skills3 = ["Streamlit", "Docker", "Git", "Power BI", "Tableau", "Jupyter", "Matplotlib", "Seaborn"]
+    for s in skills3:
         st.markdown(f'<span class="skill-badge">{s}</span>', unsafe_allow_html=True)
 
 st.divider()
 
+# Experience
 st.markdown('<p class="section-header">💼 Experience</p>', unsafe_allow_html=True)
+
 st.markdown("""
 **Data Analyst Intern** — Faceify Labs (Formir Technologies Pvt Ltd) | Jan 2026 – Jul 2026
 - Analysed real-world datasets in Python and SQL to uncover behavioural trends
@@ -164,11 +237,14 @@ st.markdown("""
 
 **Data Analysis Project Assistant** — Private Client | 2023 – 2025
 - Delivered 14 independent data analysis projects across diverse business domains
+- Generated actionable insights from complex datasets for non-technical clients
 """)
 
 st.divider()
 
+# Education
 st.markdown('<p class="section-header">🎓 Education</p>', unsafe_allow_html=True)
+
 st.markdown("""
 **MSc Data Science** — University of Birmingham, UK | 2025 – 2026
 - Dissertation: Explainable Deep Learning for Credit Risk Prediction
@@ -181,22 +257,23 @@ st.markdown("""
 
 st.divider()
 
-st.markdown('<p class="section-header">🏆 Certifications and Interests</p>', unsafe_allow_html=True)
+# Certifications
+st.markdown('<p class="section-header">🏆 Certifications and Achievements</p>', unsafe_allow_html=True)
 st.markdown("""
 - 🏅 HackerRank SQL Advanced Certification (2026)
 - 🏅 Deloitte Data Analytics Job Simulation — Forage (2026)
 - ♟️ National-level Chess Player — Maharashtra State Qualifier (2018)
-- 🌐 Languages: English (Fluent), Hindi (Fluent), Marathi (Fluent)
 """)
 
 st.divider()
 
+# Footer
 st.markdown("""
 <div style='text-align: center; color: #1a1a1a; margin-top: 2rem; padding: 1rem; background-color: #e8f0fe; border-radius: 10px;'>
     <p>📧 naiksanika70@gmail.com | 
     <a href='https://linkedin.com/in/sanikanaik1308'>LinkedIn</a> | 
     <a href='https://github.com/sanikanaik456'>GitHub</a></p>
-    <p>🌟 Open to Data Scientist, ML Engineer and AI roles in UK and Singapore!</p>
+    <p>🌟 Open to Data Scientist, ML Engineer and AI roles in the UK, Singapore and Dubai.</p>
     <p>✅ Graduate Route visa — no sponsorship required from December 2026</p>
 </div>
 """, unsafe_allow_html=True)
