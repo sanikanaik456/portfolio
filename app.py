@@ -98,8 +98,8 @@ st.markdown('<p class="section-header">👤 About Me</p>', unsafe_allow_html=Tru
 st.write("""
 I am a recent MSc Data Science graduate from the University of Birmingham with hands-on experience 
 building machine learning models, generative AI applications, and RAG pipelines. My dissertation 
-focused on Explainable Deep Learning for Credit Risk Prediction, achieving AUC 0.850 across 
-150,000 financial records while detecting and mitigating demographic bias.
+focused on Explainable Deep Learning for Credit Risk Prediction, reaching a test AUC of 0.856 on 
+150,000 financial records, and detecting and mitigating age bias.
 
 I am passionate about applying AI and data science to solve real-world problems responsibly, 
 with a particular interest in explainable AI, agentic systems, and making data accessible to everyone.
@@ -130,9 +130,11 @@ st.markdown("---")
 st.markdown("""
 <div class="project-card">
 <h3>💳 Explainable Deep Learning for Credit Risk Prediction</h3>
-<p>MSc Dissertation — Built PyTorch neural networks on 150,000 credit records (AUC 0.850), 
-applied SHAP and Integrated Gradients for explainability, detected and mitigated age bias 
-(36% to 15% false-positive rate), and built a six-tab Streamlit Decision Support System.</p>
+<p>MSc Dissertation — Built PyTorch neural networks on 150,000 credit records (test AUC 0.856 for default), 
+applied SHAP and Integrated Gradients for explainability, found that borrowers under 35 were wrongly 
+flagged as high risk 44.9% of the time against 11.6% for those 55 and over, reduced the gap with 
+group-specific thresholds (false-positive rate equalised at 15%), and built a six-tab Streamlit 
+Decision Support System.</p>
 <p><b>Tech:</b> Python, PyTorch, SHAP, Captum, Streamlit, Power BI</p>
 <p><b>Key finding:</b> SHAP and Integrated Gradients disagree on feature importance for the same model.</p>
 </div>
