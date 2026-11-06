@@ -171,6 +171,23 @@ st.markdown("🔗 [View on GitHub](https://github.com/sanikanaik456/cv-analyzer)
 
 st.markdown("---")
 
+# Project - CV Analyzer API
+st.markdown("""
+<div class="project-card">
+<h3>🧩 CV Analyzer API</h3>
+<p>A REST API built with FastAPI. It takes CV text and a job description, asks Google Gemini to 
+compare them, and returns a match score, matching and missing skills, strengths and suggestions 
+as JSON. It validates input, retries with a fallback model when the service is busy, and returns 
+clear error codes.</p>
+<p><b>Tech:</b> Python, FastAPI, pytest, Docker, Google Gemini API</p>
+<p><b>Testing:</b> 8 automated tests that replace the model with a fake one, so they need no API key</p>
+<p><b>Note:</b> Built and run locally in Docker; not deployed to a cloud service</p>
+</div>
+""", unsafe_allow_html=True)
+st.markdown("🔗 [View on GitHub](https://github.com/sanikanaik456/cv-analyzer-api)")
+
+st.markdown("---")
+
 # Project 4 - Churn
 st.markdown("""
 <div class="project-card">
