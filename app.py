@@ -118,7 +118,7 @@ st.markdown("""
 <h3>🤖 DocuChat — RAG-Powered PDF Question Answering</h3>
 <p>Upload any PDF and ask questions in natural language. Answers are grounded in real document 
 content using a RAG pipeline, which reduces unsupported answers.</p>
-<p><b>Tech:</b> Python, Streamlit, Google Gemini API, FAISS, PyPDF2</p>
+<p><b>Tech:</b> Python, Streamlit, Google Gemini API, PyPDF2</p>
 <p><b>Key feature:</b> Grounding LLM outputs in retrieved context reduces unsupported answers</p>
 </div>
 """, unsafe_allow_html=True)
